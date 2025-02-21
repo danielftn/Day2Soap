@@ -1,6 +1,6 @@
 CREATE DATABASE day2soapdb;
 
-USE MusicRecommendationDB;
+USE day2soapdb;
 
 CREATE TABLE users (
     user_id INT AUTO_INCREMENT PRIMARY KEY,
