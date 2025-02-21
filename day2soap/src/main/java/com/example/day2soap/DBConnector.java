@@ -5,9 +5,9 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class DBConnector {
-    private static final String URL = "dbc:mysql://localhost:3306/MusicRecommendationDB";
-    private static final String USERNAME = "";
-    private static final String PASSWORD = "";
+    private static final String URL = "jdbc:mysql://localhost:3306/day2Soapdb";
+    private static final String USERNAME = "user";
+    private static final String PASSWORD = "ucalgary";
 
     private static Connection connection;
 
