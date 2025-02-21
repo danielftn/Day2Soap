@@ -17,4 +17,5 @@ CREATE TABLE recommended_songs (
     FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE
 );
 
-
+CREATE USER 'user'@'localhost' IDENTIFIED BY 'ucalgary';
+GRANT ALL PRIVILEGES ON MusicRecommendationDB.* TO 'user'@'localhost';
