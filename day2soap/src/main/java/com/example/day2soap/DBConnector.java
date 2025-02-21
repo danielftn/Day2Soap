@@ -5,7 +5,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class DBConnector {
-    private static final String URL = "";
+    private static final String URL = "dbc:mysql://localhost:3306/MusicRecommendationDB";
     private static final String USERNAME = "";
     private static final String PASSWORD = "";
 
