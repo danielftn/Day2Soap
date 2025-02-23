@@ -12,11 +12,11 @@ public class SignupHandler {
     
     @PostMapping("/api/signup")
     public void signUserUp(@RequestBody User user) {
-        try (Connection conn = DBConnector.getConnection()) {
+        try {
             DBHandler dBhandler = new DBHandler();
-            dBhandler.addUser(user.getUsername(), user.getPassword(), conn);
+            dBhandler.addUser(user.getUsername(), user.getPassword());
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }
+    } 
 }
