@@ -14,6 +14,7 @@ public class LoginHandler {
 
     @PostMapping("/api/login")
     public void loginUser(@RequestBody User user) {
+        loginStatus = false;
         try {
             DBHandler dBhandler = new DBHandler();
             loginStatus = dBhandler.searchUser(user.getUsername(), user.getPassword());
