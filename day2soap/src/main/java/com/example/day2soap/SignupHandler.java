@@ -13,7 +13,8 @@ public class SignupHandler {
     @PostMapping("/api/signup")
     public void signUserUp(@RequestBody User user) {
         try (Connection conn = DBConnector.getConnection()) {
-            System.out.println(user.getUsername());
+            DBHandler dBhandler = new DBHandler();
+            dBhandler.addUser(user.getUsername(), user.getPassword(), conn);
         } catch (Exception e) {
             e.printStackTrace();
         }

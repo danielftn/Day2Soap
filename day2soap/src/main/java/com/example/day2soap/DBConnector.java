@@ -5,7 +5,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class DBConnector {
-    private static final String URL = "jdbc:mysql://localhost:3306/day2Soapdb";
+    private static final String URL = "jdbc:mysql://localhost:3306/Day2Soapdb";
     private static final String USERNAME = "user";
     private static final String PASSWORD = "ucalgary";
 
