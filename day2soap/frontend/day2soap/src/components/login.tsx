@@ -27,12 +27,16 @@ export default function Login() {
         }
 
         try {
-            const response = await fetch('http://localhost:8080/api/login', loginPostRequest)
-
-            if (response.ok) {
-                alert("Login successful!");
+            const post_response = await fetch('http://localhost:8080/api/login', loginPostRequest)
+            if (post_response.ok) {
+                const get_response = await fetch('http://localhost:8080/api/login/status');
+                if (await get_response.json()) {
+                    alert('Login success!');
+                } else {
+                    alert('Login failed');
+                }
             } else {
-                alert("Login failed (fetch worked)");
+                alert('Login failed (post failed)');
             }
         } catch (error) {
             console.log(error)
