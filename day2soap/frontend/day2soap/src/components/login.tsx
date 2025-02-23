@@ -17,7 +17,7 @@ export default function Login() {
     }
 
     const handleLogin = async () => {
-        const signupPostRequest = {
+        const loginPostRequest = {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({
@@ -27,7 +27,7 @@ export default function Login() {
         }
 
         try {
-            const response = await fetch('http://localhost:8080/api/login', signupPostRequest)
+            const response = await fetch('http://localhost:8080/api/login', loginPostRequest)
 
             if (response.ok) {
                 alert("Login successful!");
