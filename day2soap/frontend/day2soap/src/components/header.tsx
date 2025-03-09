@@ -17,7 +17,7 @@ export default function Header() {
         </li>
       </ul>
       <button className='rounded-md bg-[#A3EBFF] hover:bg-[#C7F0FB] shadow-md'>
-        <Link href="" className='lg:m-6'>Login</Link>
+        <Link href="/" className='lg:m-6'>Login</Link>
       </button>
 
     </nav>

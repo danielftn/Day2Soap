@@ -31,6 +31,7 @@ export default function Login() {
             if (post_response.ok) {
                 const get_response = await fetch('http://localhost:8080/api/login/status');
                 if (await get_response.json()) {
+                    
                     alert('Login success!');
                 } else {
                     alert('Login failed');
@@ -68,7 +69,7 @@ export default function Login() {
 
                 <div id='guest-selection'>
                     <p className='flex justify-center text-gray-400 mt-3'>
-                        <Link href='' className='hover:text-gray-300'>Continue as Guest</Link>
+                        <Link href='/main' className='hover:text-gray-300'>Continue as Guest</Link>
                     </p>
                 </div>
 

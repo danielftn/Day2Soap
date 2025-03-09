@@ -8,11 +8,11 @@ export default function Signup() {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
-    const updateUsername = (event) => {
+    const updateUsername = (event:any) => {
         setUsername(event.target.value)
     }
 
-    const updatePassword = (event) => {
+    const updatePassword = (event:any) => {
         setPassword(event.target.value)
     }
 
@@ -59,7 +59,7 @@ export default function Signup() {
 
                 <div id='signup-button' className='flex justify-center align-middle'>
                     <button onClick={handleSignup} className='bg-[#a0eafe] p-3 mt-6 rounded hover:bg-[#c5f2ff] w-full' >
-                        <Link href='/signup' className='text-white'>Sign up</Link>
+                        <Link href='/' className='text-white'>Sign up</Link>
                     </button>
                 </div>
 
