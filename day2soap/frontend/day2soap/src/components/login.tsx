@@ -1,13 +1,15 @@
 "use client"
 
-import React from 'react'
-import {useState} from 'react'
+import React, {useEffect, useState} from 'react'
+import {useAuth} from '../context/AuthContext'
 import Link from 'next/link'
+import { Concert_One } from 'next/font/google';
 
 export default function Login() {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-
+    const { login } = useAuth();
+    
     const updateUsername = (event) => {
         setUsername(event.target.value)
     }
@@ -31,8 +33,7 @@ export default function Login() {
             if (post_response.ok) {
                 const get_response = await fetch('http://localhost:8080/api/login/status');
                 if (await get_response.json()) {
-                    
-                    alert('Login success!');
+                    login();
                 } else {
                     alert('Login failed');
                 }
@@ -63,7 +64,7 @@ export default function Login() {
 
                 <div id='button' className='flex justify-center align-middle'>
                     <button onClick={handleLogin} className='bg-[#a0eafe] p-3 mt-6 rounded hover:bg-[#c5f2ff] w-full'>
-                        <Link href='/' className='text-white'>Login</Link>
+                        <button className='text-white'>Login</button>
                     </button>
                 </div>
 

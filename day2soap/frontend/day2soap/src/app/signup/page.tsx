@@ -5,7 +5,6 @@ import Signup from '../../components/signup'
 export default function Page() {
   return (
     <main>
-        <Header/>
         <Signup/>
     </main>
   )
