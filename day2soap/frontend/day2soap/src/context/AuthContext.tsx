@@ -13,7 +13,7 @@ export const AuthProvider = ({ children })  => {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const login = () => {
         setIsLoggedIn(true);
-        router.push('/main')
+        router.push('/main');
     }
     const logout = () => {
         setIsLoggedIn(false);

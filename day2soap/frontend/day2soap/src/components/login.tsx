@@ -3,7 +3,6 @@
 import React, {useEffect, useState} from 'react'
 import {useAuth} from '../context/AuthContext'
 import Link from 'next/link'
-import { Concert_One } from 'next/font/google';
 
 export default function Login() {
     const [username, setUsername] = useState('');
@@ -18,7 +17,8 @@ export default function Login() {
         setPassword(event.target.value)
     }
 
-    const handleLogin = async () => {
+    const handleLogin = async (event) => {
+        event.preventDefault();
         const loginPostRequest = {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
@@ -49,7 +49,7 @@ export default function Login() {
     <main className='flex justify-center align-middle items-center m-[8rem]'>
         <div className='bg-white p-6 rounded-lg shadow-lg w-full max-w-md'>
             <h2 className='text-center text-black text-[1.7rem] mb-5'>Login</h2>
-            <form className='m-auto'>
+            <form className='m-auto' onSubmit={handleLogin}>
                 <div id='username' className='grid grid-cols-1 mb-5'>
                     <label className='text-black'>User Name </label>
                     <input value={username}  onChange={updateUsername} type='text' className='bg-slate-100 text-black rounded p-2' placeholder='Enter Username' required>
@@ -63,8 +63,8 @@ export default function Login() {
                 </div>
 
                 <div id='button' className='flex justify-center align-middle'>
-                    <button onClick={handleLogin} className='bg-[#a0eafe] p-3 mt-6 rounded hover:bg-[#c5f2ff] w-full'>
-                        <button className='text-white'>Login</button>
+                    <button className='bg-[#a0eafe] p-3 mt-6 rounded hover:bg-[#c5f2ff] w-full text-white font-bold' type='submit'>
+                        Login
                     </button>
                 </div>
 

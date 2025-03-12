@@ -8,7 +8,7 @@ const { isLoggedIn, logout } = useAuth();
   console.log(isLoggedIn)
 
   return (
-    <nav className='flex justify-between align-middle bg-white sticky text-black lg:p-4 shadow-lg'>
+    <nav className='flex justify-between align-middle bg-white text-black lg:p-4 shadow-lg sticky top-0'>
       <h1 className='lg:text-[1.5rem]'>Day2Soap</h1>
       <ul className='flex justify-between text-center space-x-[5rem] lg:text-[1.1rem] m-auto'>
         <li>
