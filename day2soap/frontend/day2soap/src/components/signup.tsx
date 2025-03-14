@@ -17,7 +17,8 @@ export default function Signup() {
         setPassword(event.target.value)
     }
 
-    const handleSignup = async () => {
+    const handleSignup = async (event: React.FormEvent) => {
+        event.preventDefault();
         const signupPostRequest = {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
@@ -45,8 +46,8 @@ export default function Signup() {
     <main className='flex justify-center align-middle items-center m-[8rem]'>
         <div className='bg-white p-6 rounded-lg shadow-lg w-full max-w-md'>
             <h2 className='text-center text-black text-[1.7rem] mb-5'>Sign up</h2>
-            <form className='m-auto'>
-                <div id='username' className='grid grid-cols-1 mb-5' onSubmit={handleSignup}>
+            <form className='m-auto' onSubmit={handleSignup}>
+                <div id='username' className='grid grid-cols-1 mb-5'>
                     <label className='text-black'>User Name </label>
                     <input value={username}  onChange={updateUsername} type='text' className='bg-slate-100 text-black rounded p-2' placeholder='Enter Username' required>
                     </input>
