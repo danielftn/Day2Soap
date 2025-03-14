@@ -9,9 +9,9 @@ export default function Main() {
     const [favouriteGenre, setFavouriteGenre] = useState('');
     const [favouriteActor, setFavouriteActor] = useState('');
     const [favouriteDirector, setFavouriteDirector] = useState('');
-    const [mpaRating, setMpaRating] = useState('G - General Audience');
-    const [productionDecade, setProductionDecade] = useState('< 1980s');
-    const [productionLength, setProductionLength] = useState('1h');
+    const [mpaRating, setMpaRating] = useState('');
+    const [productionDecade, setProductionDecade] = useState('');
+    const [productionLength, setProductionLength] = useState('');
     
     const updateMovie = (event) => {
         setFavouriteMovie(event.target.value);
@@ -39,6 +39,7 @@ export default function Main() {
     
     const updateProductionLength = (event) => {
         setProductionLength(event.target.value);
+        console.log(productionLength)
     };
     
     const handleRecommendation = async (event) => {
@@ -87,14 +88,14 @@ export default function Main() {
                 </div>
 
                 <div id='favouriteactor' className='grid grid-cols-1 mb-5'>
-                    <label className='text-black'>Favourite Actor </label>
-                    <input onChange={updateActor} type='text' className='bg-slate-100 text-black rounded p-2' placeholder='Favourite Actor' required>
+                    <label className='text-black'>Favourite Actor (Optional) </label>
+                    <input onChange={updateActor} type='text' className='bg-slate-100 text-black rounded p-2' placeholder='Favourite Actor' >
                     </input>
                 </div>
 
                 <div id='favouritedirector' className='grid grid-cols-1 mb-5'>
-                    <label className='text-black'>Favourite Director </label>
-                    <input onChange={updateDirector}type='text' className='bg-slate-100 text-black rounded p-2' placeholder='Favourite Director' required>
+                    <label className='text-black'>Favourite Director (Optional) </label>
+                    <input onChange={updateDirector}type='text' className='bg-slate-100 text-black rounded p-2' placeholder='Favourite Director' >
                     </input>
                 </div>
 
@@ -132,7 +133,7 @@ export default function Main() {
                 
                 <div id='button' className='flex justify-center align-middle'>
                     <button className='bg-[#a0eafe] p-3 rounded hover:bg-[#c5f2ff] w-full'>
-                        <Link href='/' className='text-white font-bold'>Generate Movie Recommendation</Link>
+                        <Link href='/main' className='text-white font-bold'>Generate Movie Recommendation</Link>
                     </button>
                 </div>
             </form>

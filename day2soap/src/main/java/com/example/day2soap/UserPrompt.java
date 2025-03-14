@@ -7,16 +7,16 @@ public class UserPrompt {
     private String favouriteDirector;
     private String mpaRating;
     private String productionDecade;
-    private int length;
+    private String productionLength;
 
-    public UserPrompt(Movie favouriteMovie, User user, String favouriteActor, String favouriteDirector, String mpaRating, String productionDecade, int length) {
+    public UserPrompt(Movie favouriteMovie, User user, String favouriteActor, String favouriteDirector, String mpaRating, String productionDecade, String productionLength) {
         this.favouriteMovie = favouriteMovie;
         this.user = user;
         this.favouriteActor = favouriteActor;
         this.favouriteDirector = favouriteDirector;
         this.mpaRating = mpaRating;
         this.productionDecade = productionDecade;
-        this.length = length;
+        this.productionLength = productionLength;
     }
 
     public Movie getFavouriteMovie() {
@@ -43,8 +43,8 @@ public class UserPrompt {
         return productionDecade;
     }
 
-    public int getLength() {
-        return length;
+    public String getProductionLength() {
+        return productionLength;
     }
 
     public void setFavouriteMovie(Movie favouriteMovie) {
@@ -71,7 +71,7 @@ public class UserPrompt {
         this.productionDecade = productionDecade;
     }
 
-    public void setLength(int length) {
-        this.length = length;
+    public void setProductionLength(String productionLength) {
+        this.productionLength = productionLength;
     }
 }
