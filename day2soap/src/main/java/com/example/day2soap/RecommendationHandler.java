@@ -28,6 +28,7 @@ public class RecommendationHandler {
         this.builder = builder;
     }
 
+    // Get the recommendation data from frontend and convert it into a String to ask Gemini. Returns a list of Movie objects as a JSON to frontend
     @PostMapping("/api/recommendation")
     public ResponseEntity<List<Movie>> getRecommendation(@RequestBody UserPrompt prompt) {
         // Create a prompt string based on the user's preferences for the LLM 
