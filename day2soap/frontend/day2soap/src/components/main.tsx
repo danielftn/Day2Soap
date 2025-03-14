@@ -62,6 +62,8 @@ export default function Main() {
             const post_response = await fetch('http://localhost:8080/api/recommendation', recommendationPostRequest);
             if(post_response.ok){
                 alert('Recommendation generated');
+                const data = await post_response.json();
+                console.log(data);
             } else {
                 alert('Recommendation failed');
             }
