@@ -29,10 +29,14 @@ export default function Signup() {
         }
 
         try {
-            const response = await fetch('http://localhost:8080/api/signup', signupPostRequest)
-
-            if (response.ok) {
-                router.push('/');
+            const post_response = await fetch('http://localhost:8080/api/signup', signupPostRequest)
+            if (post_response.ok) {
+                const get_response  = await fetch('http://localhost:8080/api/signup/status');
+                if (await get_response.json()) {
+                    router.push('/');
+                } else {
+                    alert("Signup failed");
+                }
             } else {
                 alert("Signup failed (fetch worked)");
             }

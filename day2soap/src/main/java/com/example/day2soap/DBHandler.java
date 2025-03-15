@@ -5,7 +5,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class DBHandler {
-    public void addUser(String username, String password) {
+    public Boolean addUser(String username, String password) {
         Connection conn = DBConnector.getConnection();
         String SQLcommand = "INSERT INTO users (username, user_password) VALUES (?, ?)";
         try (PreparedStatement insertStatement = conn.prepareStatement(SQLcommand)) {
@@ -14,11 +14,14 @@ public class DBHandler {
             int rowChanges = insertStatement.executeUpdate();
             if (rowChanges == 1) {
                 System.out.println("User created!");
+                return true;
             } else {
                 System.out.println("Error creating user");
+                return false;
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            System.out.println("Error creating user: duplicate user");
+            return false;
         }
     }
 
