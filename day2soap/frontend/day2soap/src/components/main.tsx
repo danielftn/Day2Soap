@@ -76,7 +76,7 @@ export default function Main() {
     }
 
   return (
-    <main className='justify-center align-middle items-center m-[8rem]'>
+    <main className='items-center m-[4rem] '>
         <div className='bg-white p-6 rounded-lg shadow-lg w-full max-w'>
             <h2 className='text-left text-black text-[1.7rem] mb-5'>Movie Information</h2>
             <form className='m-auto' onSubmit={handleRecommendation}>
@@ -97,17 +97,17 @@ export default function Main() {
                     <input onChange={updateActor} type='text' className='bg-slate-100 text-black rounded p-2' placeholder='Favourite Actor' >
                     </input>
                 </div>
-
+                
                 <div id='favouritedirector' className='grid grid-cols-1 mb-5'>
                     <label className='text-black'>Favourite Director (Optional) </label>
                     <input onChange={updateDirector}type='text' className='bg-slate-100 text-black rounded p-2' placeholder='Favourite Director' >
                     </input>
                 </div>
 
-                <div className='flex mb-5'>
-                    <div id="mparating" className='grid grid-cols-1 mb-5 w-1/3'>
+                <div className='lg:grid lg:grid-cols-3 mb-5 sm:grid-cols-1'>
+                    <div id="mparating" className='grid mb-5'>
                         <label className="text-black">MPA Rating</label>
-                        <select onChange={updateMpaRating} className='bg-slate-100 text-black rounded p-2'>
+                        <select onChange={updateMpaRating} className='flex bg-slate-100 text-black rounded p-2'>
                             <option>G - General Audience</option>
                             <option>PG - Parental Guidance Suggested</option>
                             <option>PG-13 - Parental Strongly Cautioned</option>
@@ -115,7 +115,7 @@ export default function Main() {
                         </select>
                     </div>
 
-                    <div id="productiondecade" className='grid grid-cols-1 max-w mb-5 ml-4 w-1/3'>
+                    <div id="productiondecade" className='grid mb-5 lg:ml-4 '>
                         <label className="text-black">Production Decade</label>
                         <select onChange={updateProductionDecade} className='bg-slate-100 text-black rounded p-2'>
                             <option>&lt; 1980s</option>
@@ -126,7 +126,7 @@ export default function Main() {
                         </select>
                     </div>
 
-                    <div id="productiondecade" className='grid grid-cols-1 mb-5 ml-4 w-1/3'>
+                    <div id="productiondecade" className='grid mb-5 lg:ml-4'>
                         <label className="text-black">Production Length</label>
                         <select onChange={updateProductionLength} className='bg-slate-100 text-black rounded p-2'>
                             <option>1h</option>
