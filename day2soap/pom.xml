@@ -64,6 +64,19 @@
 		</dependency>
 	</dependencies>
 	
+		<!-- H2 Database for Unit Testing -->
+		<dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+			<scope>test</scope>
+		</dependency>
+
+		<!-- Spring Boot Data JPA for testing database interactions -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
+		</dependency>
+
 	<dependencyManagement>
     <dependencies>
       <dependency>
