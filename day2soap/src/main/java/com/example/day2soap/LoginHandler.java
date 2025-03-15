@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class LoginHandler {
 
     String loggedUsername;
-    String loggedPassword;
 
     @PostMapping("/api/login")
     public void loginUser(@RequestBody User user) {
@@ -21,11 +20,9 @@ public class LoginHandler {
             loginStatus = dBhandler.searchUser(user.getUsername(), user.getPassword());
             if (loginStatus) {
                 loggedUsername = user.getUsername();
-                loggedPassword = user.getPassword();
             }
             else {
                 loggedUsername = null;
-                loggedPassword = null;
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -34,7 +31,7 @@ public class LoginHandler {
 
     @GetMapping("/api/login/status")
     public User isLoggedIn() {
-        return new User(loggedUsername, loggedPassword);
+        return new User(loggedUsername, null);
     }
     
 }

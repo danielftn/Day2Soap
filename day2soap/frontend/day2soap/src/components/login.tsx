@@ -32,8 +32,8 @@ export default function Login() {
             const post_response = await fetch('http://localhost:8080/api/login', loginPostRequest)
             if (post_response.ok) {
                 const get_response = await fetch('http://localhost:8080/api/login/status');
-                const data = await get_response.json()
-                if (data.username !== null  && data.password !== null) {
+                const data = await get_response.json();
+                if (data.username !== null) {
                     login();
                 } else {
                     alert('Login failed');
