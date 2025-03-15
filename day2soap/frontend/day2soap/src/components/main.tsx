@@ -3,9 +3,11 @@
 import Link from "next/link"
 import React from 'react'
 import { useState } from 'react';
+import { useUser } from '@/context/UserContext';
 import RecommendationResults from "./recommendationResults";
 
 export default function Main() {
+    const { user } = useUser();
     const [favouriteMovie, setFavouriteMovie] = useState('');
     const [favouriteGenre, setFavouriteGenre] = useState('');
     const [favouriteActor, setFavouriteActor] = useState('');
@@ -50,6 +52,7 @@ export default function Main() {
             method: 'POST',
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify({
+                    username: user || null, 
                     favouriteMovie: favouriteMovie,
                     favouriteGenre: favouriteGenre,
                     favouriteActor: favouriteActor,
@@ -66,6 +69,7 @@ export default function Main() {
                 alert('Recommendation generated');
                 const data = await post_response.json();
                 console.log(data);
+            
             } else {
                 alert('Recommendation failed');
                 setShowRecommendation(true);

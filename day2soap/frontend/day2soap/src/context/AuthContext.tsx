@@ -17,9 +17,11 @@ export const AuthProvider = ({ children })  => {
     }
     const logout = () => {
         setIsLoggedIn(false);
-        router.push('/')
-    }
-
+        localStorage.removeItem("user");  
+        router.push('/');
+        window.location.reload();  
+    };
+    
     return (
         <AuthContext.Provider value={{ isLoggedIn, login, logout}}>
             {children}
