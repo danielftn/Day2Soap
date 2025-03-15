@@ -1,6 +1,9 @@
-import React from 'react'
+"use client"
+import { useUser } from '@/context/UserContext'
 
 export default function History() {
+  const { user } = useUser();
+  console.log(user);
   return (
     <main className='flex justify-center align-middle items-center m-[8rem]'>
         <div className='bg-white p-6 rounded-lg shadow-lg w-full max-w mx-10'>

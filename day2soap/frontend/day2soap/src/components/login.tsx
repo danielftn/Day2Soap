@@ -1,13 +1,15 @@
 "use client"
 
-import React, {useEffect, useState} from 'react'
+import React, {useState} from 'react'
 import {useAuth} from '../context/AuthContext'
+import {useUser} from '../context/UserContext'
 import Link from 'next/link'
 
 export default function Login() {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const { login } = useAuth();
+    const { switchUser } = useUser();
     
     const updateUsername = (event) => {
         setUsername(event.target.value)
@@ -35,6 +37,7 @@ export default function Login() {
                 const data = await get_response.json();
                 if (data.username !== null) {
                     login();
+                    switchUser(data.username);
                 } else {
                     alert('Login failed');
                 }
