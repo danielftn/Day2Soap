@@ -10,22 +10,31 @@ import org.springframework.web.bind.annotation.GetMapping;
 @RestController
 public class LoginHandler {
 
-    Boolean loginStatus = false;
+    String loggedUsername;
+    String loggedPassword;
 
     @PostMapping("/api/login")
     public void loginUser(@RequestBody User user) {
-        loginStatus = false;
+        Boolean loginStatus = false;
         try {
             DBHandler dBhandler = new DBHandler();
             loginStatus = dBhandler.searchUser(user.getUsername(), user.getPassword());
+            if (loginStatus) {
+                loggedUsername = user.getUsername();
+                loggedPassword = user.getPassword();
+            }
+            else {
+                loggedUsername = null;
+                loggedPassword = null;
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
     @GetMapping("/api/login/status")
-    public Boolean isLoggedIn() {
-        return loginStatus;
+    public User isLoggedIn() {
+        return new User(loggedUsername, loggedPassword);
     }
     
 }
