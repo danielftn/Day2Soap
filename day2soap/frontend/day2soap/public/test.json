@@ -1,0 +1,27 @@
+[
+    {
+        "title": "Ready Player One",
+        "year": 2018,
+        "description": "In a near-future dystopia, Wade Watts escapes his grim surroundings by logging into the OASIS, a sprawling virtual utopia where he can be anything he wants. When the eccentric creator of the OASIS dies, he launches a contest promising his immense fortune and control of the OASIS to whoever can solve a series of puzzles hidden within the virtual world. Wade joins the hunt, battling corporate rivals and other ruthless players who are determined to control the OASIS for their own ends."
+    },
+    {
+        "title": "War Horse",
+        "year": 2011,
+        "description": "Young Albert enlists to serve in World War I after his beloved horse Joey is sold to the cavalry. Albert's hopeful journey takes him through the horrors of war as the story follows Joey's experiences on the front lines and the enduring bond between man and animal."
+    },
+    {
+        "title": "The Adventures of Tintin",
+        "year": 2011,
+        "description": "Intrepid young reporter Tintin and his loyal dog Snowy are thrust into a world of high adventure when they discover a model ship carrying a long-lost secret. Kidnapped by nefarious villains who want the ship for their own purposes, Tintin embarks on a thrilling quest across the globe to uncover the truth behind a legendary treasure."
+    },
+    {
+        "title": "Captain America: The Winter Soldier",
+        "year": 2014,
+        "description": "As Steve Rogers struggles to embrace his role in the modern world, he teams up with Black Widow to battle a powerful threat emerging from the shadows. They confront a formidable assassin known as the Winter Soldier, whose mysterious past has disturbing connections to Captain America's own history."
+    },
+    {
+        "title": "Avengers: Age of Ultron",
+        "year": 2015,
+        "description": "When Tony Stark tries to jumpstart a dormant peacekeeping program, things go awry and Earth's Mightiest Heroes are put to the ultimate test as they battle Ultron, a technological terror hell-bent on human extinction. The Avengers must assemble once again to save humanity from Ultron's destructive plans."
+    }
+]
