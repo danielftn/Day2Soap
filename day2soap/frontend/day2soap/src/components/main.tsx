@@ -3,6 +3,7 @@
 import Link from "next/link"
 import React from 'react'
 import { useState } from 'react';
+import RecommendationResults from "./recommendationResults";
 
 export default function Main() {
     const [favouriteMovie, setFavouriteMovie] = useState('');
@@ -12,6 +13,7 @@ export default function Main() {
     const [mpaRating, setMpaRating] = useState('');
     const [productionDecade, setProductionDecade] = useState('');
     const [productionLength, setProductionLength] = useState('');
+    const [showRecommendation, setShowRecommendation] = useState(false);
     
     const updateMovie = (event) => {
         setFavouriteMovie(event.target.value);
@@ -66,6 +68,7 @@ export default function Main() {
                 console.log(data);
             } else {
                 alert('Recommendation failed');
+                setShowRecommendation(true);
             }
         } catch (error) {
             console.log(error)
@@ -73,8 +76,8 @@ export default function Main() {
     }
 
   return (
-    <main className='flex justify-center align-middle items-center m-[8rem]'>
-        <div className='bg-white p-6 rounded-lg shadow-lg w-full max-w mx-10'>
+    <main className='justify-center align-middle items-center m-[8rem]'>
+        <div className='bg-white p-6 rounded-lg shadow-lg w-full max-w'>
             <h2 className='text-left text-black text-[1.7rem] mb-5'>Movie Information</h2>
             <form className='m-auto' onSubmit={handleRecommendation}>
                 <div id='favouritemovie' className='grid grid-cols-1 mb-5'>
@@ -139,6 +142,10 @@ export default function Main() {
                     </button>
                 </div>
             </form>
+        </div>
+
+        <div>
+            {showRecommendation ? <RecommendationResults/> : <></>}
         </div>
     </main>
   )
