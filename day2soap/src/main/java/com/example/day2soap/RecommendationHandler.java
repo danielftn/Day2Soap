@@ -8,7 +8,12 @@ import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.http.ResponseEntity;
 import java.util.regex.*;
 import java.util.List;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 
 @CrossOrigin(origins = "http://localhost:3000")
 @RestController
@@ -19,6 +24,7 @@ public class RecommendationHandler {
         this.builder = builder;
     }
 
+<<<<<<< Updated upstream
     // Get the recommendation data from frontend and convert it into a String to ask Gemini. Returns a list of Movie objects as a JSON to frontend
     @PostMapping("/api/recommendation")
     public ResponseEntity<List<Movie>> getRecommendation(@RequestBody UserPrompt prompt) {
@@ -44,6 +50,47 @@ public class RecommendationHandler {
             System.out.println(movie.getTitle());
         }
         return ResponseEntity.ok(movies);
+=======
+  // Get the recommendation data from frontend and convert it into a String to ask Gemini. Returns a list of Movie objects as a JSON to frontend
+  @PostMapping("/api/recommendation")
+public ResponseEntity<List<Movie>> getRecommendation(@RequestBody UserPrompt prompt) {
+    // **Hardcoded movies in the same format as API response**
+    String hardcodedResponse = """
+        ***Inception*** (2010) "A thief enters people's dreams to steal secrets."
+        ***Interstellar*** (2014) "A team of astronauts travels through a wormhole."
+        ***The Dark Knight*** (2008) "Batman battles the Joker to save Gotham."
+        ***Titanic*** (1997) "A love story set on the ill-fated Titanic."
+        ***The Matrix*** (1999) "A hacker discovers reality is a simulation."
+    """;
+
+    // **Parse hardcoded response using existing parseMovies()**
+    List<Movie> movies = parseMovies(hardcodedResponse);
+
+    // **Save movies to database only if user is logged in**
+    if (prompt.getUsername() != null && !prompt.getUsername().isEmpty()) {
+        saveMoviesToDatabase(prompt.getUsername(), movies);
+    }
+
+    return ResponseEntity.ok(movies);
+}
+
+    // **Save Generated Movies to Database**
+    private void saveMoviesToDatabase(String username, List<Movie> movies) {
+        Connection conn = DBConnector.getConnection();
+        String sql = "INSERT INTO recommended_movies (user, movie_title, release_year, description) VALUES (?, ?, ?, ?)";
+
+        try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            for (Movie movie : movies) {
+                pstmt.setString(1, username);
+                pstmt.setString(2, movie.getTitle());
+                pstmt.setInt(3, movie.getYear());
+                pstmt.setString(4, movie.getDescription());
+                pstmt.executeUpdate();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+>>>>>>> Stashed changes
     }
 
     public List<Movie> parseMovies(String response){
