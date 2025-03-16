@@ -1,13 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import { useUser } from "@/context/UserContext";
-
-// Define Movie type
-type Movie = {
-  title: string;
-  year: number;
-  description: string;
-};
+import { Movie } from "@/models/Movie";
 
 export default function History() {
   const { user } = useUser();

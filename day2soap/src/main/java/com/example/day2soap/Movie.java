@@ -5,17 +5,29 @@ public class Movie {
     private String title;
     private int year;
     private String description;
+    private boolean watched;
 
-    public Movie(String title, int year, String description) {
+    public Movie(String title, int year, String description, boolean watched) {
         this.title = title;
         this.year = year;
         this.description = description;
+        this.watched = watched;
     }
 
+    public Movie(){}
+    
     public Movie(String title){
         this.title = title;
     }
     
+    public boolean isWatched() {
+        return this.watched;
+    }
+
+    public void setWatched(boolean watched) {
+        this.watched = watched;
+    }
+
     public String getTitle() {
         return this.title;
     }

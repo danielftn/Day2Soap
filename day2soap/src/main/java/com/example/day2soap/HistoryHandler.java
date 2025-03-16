@@ -19,7 +19,7 @@ public class HistoryHandler {
             return ResponseEntity.badRequest().body(movies);
         }
 
-        String sql = "SELECT movie_title, release_year, description FROM recommended_movies WHERE user = ?";
+        String sql = "SELECT movie_title, release_year, description, watched FROM recommended_movies WHERE user = ?";
         try (Connection conn = DBConnector.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(sql, ResultSet.TYPE_FORWARD_ONLY, ResultSet.CONCUR_READ_ONLY)) {
 
@@ -29,7 +29,8 @@ public class HistoryHandler {
                     movies.add(new Movie(
                         rs.getString("movie_title"),
                         rs.getInt("release_year"),
-                        rs.getString("description")
+                        rs.getString("description"),
+                        rs.getBoolean("watched")
                     ));
                 }
             }

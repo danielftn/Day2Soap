@@ -58,7 +58,7 @@ public class DBHandler {
                 String movieTitle = rows.getString("movie_title");
                 int releaseYear = rows.getInt("release_year");
                 String description = rows.getString("description");
-                movies.add(new Movie(movieTitle, releaseYear, description));
+                movies.add(new Movie(movieTitle, releaseYear, description, false));
             }
         } catch (SQLException e) {
             e.printStackTrace();
