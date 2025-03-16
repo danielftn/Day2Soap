@@ -12,11 +12,15 @@ export default function Main() {
     const [favouriteGenre, setFavouriteGenre] = useState('');
     const [favouriteActor, setFavouriteActor] = useState('');
     const [favouriteDirector, setFavouriteDirector] = useState('');
-    const [mpaRating, setMpaRating] = useState('');
-    const [productionDecade, setProductionDecade] = useState('');
-    const [productionLength, setProductionLength] = useState('');
+    const [mpaRating, setMpaRating] = useState('G - General Audience');
+    const [productionDecade, setProductionDecade] = useState('< 1980s');
+    const [productionLength, setProductionLength] = useState('1h');
     const [showRecommendation, setShowRecommendation] = useState(false);
+    const [recommendationData, setRecommendationData] = useState([]);
     
+    const updateRecommendationData = (data) => {
+        setRecommendationData(data);
+    }
     const updateMovie = (event) => {
         setFavouriteMovie(event.target.value);
     };
@@ -69,10 +73,10 @@ export default function Main() {
                 alert('Recommendation generated');
                 const data = await post_response.json();
                 console.log(data);
-            
+                updateRecommendationData(data);
+                setShowRecommendation(true);
             } else {
                 alert('Recommendation failed');
-                setShowRecommendation(true);
             }
         } catch (error) {
             console.log(error)
@@ -149,7 +153,7 @@ export default function Main() {
         </div>
 
         <div>
-            {showRecommendation ? <RecommendationResults/> : <></>}
+            {showRecommendation ? <RecommendationResults recommendation={recommendationData}/> : <></>}
         </div>
     </main>
   )
