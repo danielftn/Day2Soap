@@ -25,7 +25,7 @@ export default function Movies() {
 
   // Sorts the Movies in Alphabetical order
   const sortedMovies = [...movies].sort(
-    (a, b) => Number(b.checked) - Number(a.checked)
+    (a, b) => Number(a.checked)- Number(b.checked) 
   );
 
   return (
@@ -34,7 +34,7 @@ export default function Movies() {
         <h2 className="text-left text-black text-[1.7rem] mb-5">Movies</h2>
         <div
           id="movies-box"
-          className=" flex justify-center bg-slate-100 p-6 rounded-lg shadow-lg w-9/10 mx-10"
+          className=" flex justify-center bg-slate-100 p-6 rounded-lg shadow-lg w-9/10"
         >
           <ul className="flex flex-col justify-start w-full" id="movies-list">
             {sortedMovies.map((movie) => (
