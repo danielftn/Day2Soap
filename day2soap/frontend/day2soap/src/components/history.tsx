@@ -43,7 +43,7 @@ export default function History() {
         <div className='bg-white p-6 rounded-lg shadow-lg w-full max-w mx-10'>
             <h2 className='text-left text-black text-[1.7rem] mb-5'>History</h2>
             <div>
-              {movieHistory.map((movie, index) => (
+              {movieHistory.map((movie: any, index) => (
                   <div key={index} className='text-black mb-5'>
                       <h2>{movie.title} - {movie.year}</h2> 
                       <p>{movie.description}</p>
