@@ -3,6 +3,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
+import java.util.ArrayList;
 
 public class DBHandler {
     public Boolean addUser(String username, String password) {
@@ -45,5 +47,23 @@ public class DBHandler {
         }
     }
 
+    public List<Movie> retrieveMovies(String username) {
+        List<Movie> movies = new ArrayList<Movie>();
+        Connection conn = DBConnector.getConnection();
+        String SQLcommand = "SELECT * FROM recommended_movies WHERE user = ?";
+        try (PreparedStatement selectStatement = conn.prepareStatement(SQLcommand)) {
+            selectStatement.setString(1, username);
+            ResultSet rows = selectStatement.executeQuery();
+            while (rows.next()) {
+                String movieTitle = rows.getString("movie_title");
+                int releaseYear = rows.getInt("release_year");
+                String description = rows.getString("description");
+                movies.add(new Movie(movieTitle, releaseYear, description));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return movies;
+    }
 
 }
