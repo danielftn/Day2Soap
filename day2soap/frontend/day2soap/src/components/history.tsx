@@ -41,8 +41,8 @@ export default function History() {
         ) : (
           <ul className="space-y-4">
             {movies.map((movie, index) => (
-              <li key={index} className="border p-4 rounded-lg shadow">
-                <h3 className="text-xl font-semibold">{movie.title} ({movie.year})</h3>
+              <li key={index} className="border p-4">
+                <h3 className="text-xl font-semibold text-black">{movie.title} ({movie.year})</h3>
                 <p className="text-gray-600">{movie.description}</p>
               </li>
             ))}
