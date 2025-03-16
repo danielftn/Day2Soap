@@ -2,15 +2,16 @@ package com.example.day2soap;
 
 public class UserPrompt {
     private String username;
-    private Movie favouriteMovie;
     private User user;
+    private Movie favouriteMovie;
+    private String favouriteGenre;
     private String favouriteActor;
     private String favouriteDirector;
     private String mpaRating;
     private String productionDecade;
     private String productionLength;
 
-    public UserPrompt(Movie favouriteMovie, User user, String favouriteActor, String favouriteDirector, String mpaRating, String productionDecade, String productionLength, String username) {
+    public UserPrompt(Movie favouriteMovie, User user, String favouriteActor, String favouriteDirector, String mpaRating, String productionDecade, String productionLength, String username, String favouriteGenre) {
         this.username = username;
         this.favouriteMovie = favouriteMovie;
         this.user = user;
@@ -19,6 +20,13 @@ public class UserPrompt {
         this.mpaRating = mpaRating;
         this.productionDecade = productionDecade;
         this.productionLength = productionLength;
+        this.favouriteGenre = favouriteGenre;
+    }
+    public String getFavouriteGenre() {
+        return favouriteGenre;
+    }
+    public void setFavouriteGenre(String favouriteGenre) {
+        this.favouriteGenre = favouriteGenre;
     }
     public String getUsername() {
         return username;

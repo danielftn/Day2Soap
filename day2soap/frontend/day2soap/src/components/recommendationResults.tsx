@@ -1,8 +1,6 @@
 import React, { useEffect } from 'react'
-import { getOutput } from '@/geminiOutput/output'
-import { recommendations } from '@/geminiOutput/output'
 
-export default function RecommendationResults() {
+const RecommendationResults = ({recommendation}) => {
     return (
         <main className='mt-3 bg-white p-6 rounded-lg shadow-lg w-full'>
             <div className='fle'>
@@ -10,9 +8,9 @@ export default function RecommendationResults() {
             </div>
 
             <div>
-                {recommendations.map((recommendation, index) => (
+                {recommendation.map((recommendation, index) => (
                     <div key={index} className='text-black mb-5'>
-                        <h2>{recommendation.title} - {recommendation.year}</h2> 
+                        <h2 className="font-bold">{recommendation.title} - {recommendation.year}</h2> 
                         <p>{recommendation.description}</p>
 
                     </div>
@@ -20,4 +18,6 @@ export default function RecommendationResults() {
             </div>
         </main>
     )
-}
+};
+
+export default RecommendationResults;
