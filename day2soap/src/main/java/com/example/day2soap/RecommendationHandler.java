@@ -4,8 +4,17 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.GetMapping;
+
 import org.springframework.ai.chat.client.ChatClient;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.context.annotation.Bean;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
+
+import java.util.HashMap;
+import java.util.Map;
 import java.util.regex.*;
 import java.util.List;
 import java.sql.PreparedStatement;
@@ -24,7 +33,6 @@ public class RecommendationHandler {
         this.builder = builder;
     }
 
-<<<<<<< Updated upstream
     // Get the recommendation data from frontend and convert it into a String to ask Gemini. Returns a list of Movie objects as a JSON to frontend
     @PostMapping("/api/recommendation")
     public ResponseEntity<List<Movie>> getRecommendation(@RequestBody UserPrompt prompt) {
@@ -49,22 +57,6 @@ public class RecommendationHandler {
         for(Movie movie : movies){
             System.out.println(movie.getTitle());
         }
-        return ResponseEntity.ok(movies);
-=======
-  // Get the recommendation data from frontend and convert it into a String to ask Gemini. Returns a list of Movie objects as a JSON to frontend
-  @PostMapping("/api/recommendation")
-public ResponseEntity<List<Movie>> getRecommendation(@RequestBody UserPrompt prompt) {
-    // **Hardcoded movies in the same format as API response**
-    String hardcodedResponse = """
-        ***Inception*** (2010) "A thief enters people's dreams to steal secrets."
-        ***Interstellar*** (2014) "A team of astronauts travels through a wormhole."
-        ***The Dark Knight*** (2008) "Batman battles the Joker to save Gotham."
-        ***Titanic*** (1997) "A love story set on the ill-fated Titanic."
-        ***The Matrix*** (1999) "A hacker discovers reality is a simulation."
-    """;
-
-    // **Parse hardcoded response using existing parseMovies()**
-    List<Movie> movies = parseMovies(hardcodedResponse);
 
     // **Save movies to database only if user is logged in**
     if (prompt.getUsername() != null && !prompt.getUsername().isEmpty()) {
@@ -90,7 +82,6 @@ public ResponseEntity<List<Movie>> getRecommendation(@RequestBody UserPrompt pro
         } catch (SQLException e) {
             e.printStackTrace();
         }
->>>>>>> Stashed changes
     }
 
     public List<Movie> parseMovies(String response){
