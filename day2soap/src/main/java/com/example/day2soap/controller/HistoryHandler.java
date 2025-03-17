@@ -1,6 +1,10 @@
-package com.example.day2soap;
+package com.example.day2soap.controller;
 
 import org.springframework.web.bind.annotation.*;
+
+import com.example.day2soap.model.Movie;
+import com.example.day2soap.repository.DBConnector;
+
 import org.springframework.http.ResponseEntity;
 import java.sql.*;
 import java.util.ArrayList;
