@@ -15,6 +15,14 @@ public class SignupHandler {
     
     private Boolean signupStatus = false;
 
+    public Boolean getSignupStatus() {
+        return signupStatus;
+    }
+
+    public void setSignupStatus(Boolean signupStatus) {
+        this.signupStatus = signupStatus;
+    }
+
     @PostMapping("/api/signup")
     public void signUserUp(@RequestBody User user) {
         try {
