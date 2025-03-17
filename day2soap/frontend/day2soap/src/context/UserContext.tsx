@@ -9,8 +9,16 @@ export const UserContext = createContext<{
 export const UserProvider = ({ children }) => {
     const [user, setUser] = useState<string | null>(null);
 
+    useEffect(() => {
+        const storedUser = localStorage.getItem("user");
+        if (storedUser) {
+            setUser(storedUser);
+        }   
+    }, []);
+
     const switchUser = (u: string) => {
         setUser(u);
+        localStorage.setItem("user", u);
     }
 
     return (

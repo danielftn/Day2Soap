@@ -22,6 +22,10 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 
+import com.example.day2soap.controller.DBHandler;
+import com.example.day2soap.controller.SignupHandler;
+import com.example.day2soap.model.User;
+
 class SignupHandlerTest {
 
     private MockMvc mockMvc;
@@ -37,7 +41,7 @@ class SignupHandlerTest {
         MockitoAnnotations.openMocks(this);
         mockMvc = MockMvcBuilders.standaloneSetup(signupHandler).build();
 
-        signupHandler.signupStatus = false;
+        signupHandler.setSignupStatus(false);
     }
 
     @Test
@@ -70,7 +74,7 @@ void testSignUserUp_Failure() {
 
     @Test
     void testIsSignedIn() throws Exception {
-        signupHandler.signupStatus = true; 
+        signupHandler.setSignupStatus(true); 
 
         mockMvc.perform(get("/api/signup/status"))
                 .andExpect(status().isOk())

@@ -4,7 +4,6 @@ import com.example.day2soap.model.Movie;
 import com.example.day2soap.model.User;
 
 public class UserPrompt {
-    private String username;
     private User user;
     private Movie favouriteMovie;
     private String favouriteGenre;
@@ -15,7 +14,6 @@ public class UserPrompt {
     private String productionLength;
 
     public UserPrompt(Movie favouriteMovie, User user, String favouriteActor, String favouriteDirector, String mpaRating, String productionDecade, String productionLength, String username, String favouriteGenre) {
-        this.username = username;
         this.favouriteMovie = favouriteMovie;
         this.user = user;
         this.favouriteActor = favouriteActor;
@@ -30,9 +28,6 @@ public class UserPrompt {
     }
     public void setFavouriteGenre(String favouriteGenre) {
         this.favouriteGenre = favouriteGenre;
-    }
-    public String getUsername() {
-        return username;
     }
 
     public Movie getFavouriteMovie() {
