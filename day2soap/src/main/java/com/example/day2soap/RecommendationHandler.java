@@ -18,6 +18,7 @@ import java.util.Map;
 import java.util.regex.*;
 import java.util.List;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.sql.Connection;
@@ -47,12 +48,14 @@ public class RecommendationHandler {
             builderString.append("I prefer movies directed by " + prompt.getFavouriteDirector() + ". ");
         }
         builderString.append("I prefer movies produced in the " + prompt.getProductionDecade() + " with a " + prompt.getMpaRating() + " rating and a length of " + prompt.getProductionLength() +
-         ". List the movies including title between asterisks, year in parentheses, and description in quotes.");
+         ". List the movies including title between 3 asterisks, year in parentheses, and description in quotes.");
 
         String promptString = builderString.toString();
         
         String response = askLLM(builder, promptString);
         List<Movie> movies = parseMovies(response);    
+
+        System.out.println("Recommended movies: " + response + "\n\n");
 
         for(Movie movie : movies){
             System.out.println(movie.getTitle());
@@ -68,21 +71,36 @@ public class RecommendationHandler {
 
     // **Save Generated Movies to Database**
     private void saveMoviesToDatabase(String username, List<Movie> movies) {
-        Connection conn = DBConnector.getConnection();
-        String sql = "INSERT INTO recommended_movies (user, movie_title, release_year, description) VALUES (?, ?, ?, ?)";
+    Connection conn = DBConnector.getConnection();
+    
+    // SQL to check if the movie already exists in the database
+    String checkSql = "SELECT COUNT(*) FROM recommended_movies WHERE user = ? AND movie_title = ?";
+    String insertSql = "INSERT INTO recommended_movies (user, movie_title, release_year, description) VALUES (?, ?, ?, ?)";
 
-        try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
-            for (Movie movie : movies) {
-                pstmt.setString(1, username);
-                pstmt.setString(2, movie.getTitle());
-                pstmt.setInt(3, movie.getYear());
-                pstmt.setString(4, movie.getDescription());
-                pstmt.executeUpdate();
+    try (PreparedStatement checkPstmt = conn.prepareStatement(checkSql);
+         PreparedStatement insertPstmt = conn.prepareStatement(insertSql)) {
+
+        for (Movie movie : movies) {
+            // Check if the movie already exists
+            checkPstmt.setString(1, username);
+            checkPstmt.setString(2, movie.getTitle());
+            
+            ResultSet rs = checkPstmt.executeQuery();
+            if (rs.next() && rs.getInt(1) == 0) { // If the movie does not exist (count = 0)
+                // Movie doesn't exist, so insert it
+                insertPstmt.setString(1, username);
+                insertPstmt.setString(2, movie.getTitle());
+                insertPstmt.setInt(3, movie.getYear());
+                insertPstmt.setString(4, movie.getDescription());
+                insertPstmt.executeUpdate();
+            } else {
+                System.out.println("Movie already exists: " + movie.getTitle());
             }
-        } catch (SQLException e) {
-            e.printStackTrace();
         }
+    } catch (SQLException e) {
+        e.printStackTrace();
     }
+}
 
     public List<Movie> parseMovies(String response){
         // Create a pattern to match the movie information
@@ -97,7 +115,7 @@ public class RecommendationHandler {
             String title = matcher.group(1);
             int year = Integer.parseInt(matcher.group(2));
             String description = matcher.group(3);
-            Movie movie = new Movie(title, year, description);
+            Movie movie = new Movie(title, year, description, false);
             movies.add(movie);
         }
 

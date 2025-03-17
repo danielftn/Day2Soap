@@ -1,13 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import { useUser } from "@/context/UserContext";
-
-// Define Movie type
-type Movie = {
-  title: string;
-  year: number;
-  description: string;
-};
+import { Movie } from "@/models/Movie";
 
 export default function History() {
   const { user } = useUser();
@@ -41,8 +35,8 @@ export default function History() {
         ) : (
           <ul className="space-y-4">
             {movies.map((movie, index) => (
-              <li key={index} className="border p-4 rounded-lg shadow">
-                <h3 className="text-xl font-semibold">{movie.title} ({movie.year})</h3>
+              <li key={index} className="border p-4">
+                <h3 className="text-xl font-semibold text-black">{movie.title} ({movie.year})</h3>
                 <p className="text-gray-600">{movie.description}</p>
               </li>
             ))}

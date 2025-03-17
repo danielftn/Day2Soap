@@ -13,8 +13,12 @@ CREATE TABLE recommended_movies (
     movie_title VARCHAR(255) NOT NULL,
     release_year INT,
     description TEXT NOT NULL,
+    watched boolean default false,
     FOREIGN KEY (user) REFERENCES users(username) ON DELETE CASCADE
 );
 
 CREATE USER 'user'@'localhost' IDENTIFIED BY 'ucalgary';
 GRANT ALL PRIVILEGES ON day2soapdb.* TO 'user'@'localhost';
+
+Select * from users;
+Select * from recommended_movies;
