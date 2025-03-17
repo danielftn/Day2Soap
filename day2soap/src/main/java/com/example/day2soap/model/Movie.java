@@ -1,4 +1,4 @@
-package com.example.day2soap;
+package com.example.day2soap.model;
 
 
 public class Movie {

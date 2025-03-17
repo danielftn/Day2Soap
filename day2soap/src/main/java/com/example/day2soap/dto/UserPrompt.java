@@ -1,4 +1,7 @@
-package com.example.day2soap;
+package com.example.day2soap.dto;
+
+import com.example.day2soap.model.Movie;
+import com.example.day2soap.model.User;
 
 public class UserPrompt {
     private String username;

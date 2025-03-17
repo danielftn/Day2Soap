@@ -1,7 +1,10 @@
-package com.example.day2soap;
+package com.example.day2soap.controller;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.example.day2soap.model.User;
+
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,7 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 @RestController
 public class LoginHandler {
 
-    String loggedUsername;
+    private String loggedUsername;
 
     @PostMapping("/api/login")
     public void loginUser(@RequestBody User user) {

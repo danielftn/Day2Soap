@@ -1,20 +1,16 @@
-package com.example.day2soap;
+package com.example.day2soap.controller;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.example.day2soap.dto.UserPrompt;
+import com.example.day2soap.model.Movie;
+import com.example.day2soap.repository.DBConnector;
+
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.GetMapping;
-
 import org.springframework.ai.chat.client.ChatClient;
-import org.springframework.boot.CommandLineRunner;
-import org.springframework.context.annotation.Bean;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Service;
-
-import java.util.HashMap;
-import java.util.Map;
 import java.util.regex.*;
 import java.util.List;
 import java.sql.PreparedStatement;
@@ -22,8 +18,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
 
 @CrossOrigin(origins = "http://localhost:3000")
 @RestController

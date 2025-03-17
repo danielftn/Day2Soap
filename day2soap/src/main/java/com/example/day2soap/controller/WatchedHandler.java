@@ -1,6 +1,10 @@
-package com.example.day2soap;
+package com.example.day2soap.controller;
 
 import org.springframework.web.bind.annotation.*;
+
+import com.example.day2soap.dto.MovieRequest;
+import com.example.day2soap.repository.DBConnector;
+
 import org.springframework.http.ResponseEntity;
 import java.sql.*;
 
@@ -10,9 +14,6 @@ public class WatchedHandler {
     
     @PutMapping("/api/watched")
     public ResponseEntity<String> setWatched(@RequestBody MovieRequest request) {
-        System.out.println(request + "\n\n\n");
-        System.out.println("Movie title: " + request.getMovie() + "\n\n\n");
-
         String username = request.getUsername();
         String movieTitle = request.getMovie().getTitle();
         boolean watched = request.getMovie().isWatched();

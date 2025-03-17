@@ -1,4 +1,6 @@
-package com.example.day2soap;
+package com.example.day2soap.dto;
+
+import com.example.day2soap.model.Movie;
 
 public class MovieRequest {
     private String username;
