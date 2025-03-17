@@ -56,8 +56,8 @@ public class RecommendationHandler {
         }
 
     // **Save movies to database only if user is logged in**
-    if (prompt.getUsername() != null && !prompt.getUsername().isEmpty()) {
-        saveMoviesToDatabase(prompt.getUsername(), movies);
+    if (prompt.getUser().getUsername() != null && !prompt.getUser().getUsername().isEmpty()) {
+        saveMoviesToDatabase(prompt.getUser().getUsername(), movies);
     }
 
     return ResponseEntity.ok(movies);

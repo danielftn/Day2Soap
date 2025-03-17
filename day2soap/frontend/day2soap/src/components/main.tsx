@@ -56,7 +56,7 @@ export default function Main() {
             method: 'POST',
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify({
-                    username: user || null, 
+                    user: user ? {username: user} : {username: null}, 
                     favouriteMovie: favouriteMovie,
                     favouriteGenre: favouriteGenre,
                     favouriteActor: favouriteActor,
