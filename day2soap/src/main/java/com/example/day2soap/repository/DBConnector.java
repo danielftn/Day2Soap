@@ -10,12 +10,12 @@ public class DBConnector {
     private static final String PASSWORD = "ucalgary";
     public static Connection instance;
     
-    // Return a new connection
+    // Return a new connection (singleton pattern)
     public static Connection getConnection() {
         if (instance == null ) {
-            System.out.println("created database connection");
             try {
                 instance = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+                System.out.println("created database connection");
             } catch (SQLException e) {
                 e.printStackTrace();
                 throw new RuntimeException("Database connection failed!");
