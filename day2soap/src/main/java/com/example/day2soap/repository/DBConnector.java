@@ -8,14 +8,19 @@ public class DBConnector {
     private static final String URL = "jdbc:mysql://localhost:3306/Day2Soapdb";
     private static final String USERNAME = "user";
     private static final String PASSWORD = "ucalgary";
+    public static Connection instance;
     
-    // Return a new connection each time
+    // Return a new connection
     public static Connection getConnection() {
-        try {
-            return DriverManager.getConnection(URL, USERNAME, PASSWORD);
-        } catch (SQLException e) {
-            e.printStackTrace();
-            throw new RuntimeException("Database connection failed!");
+        if (instance == null ) {
+            System.out.println("created database connection");
+            try {
+                instance = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+            } catch (SQLException e) {
+                e.printStackTrace();
+                throw new RuntimeException("Database connection failed!");
+            }
         }
+        return instance;
     }
 }
