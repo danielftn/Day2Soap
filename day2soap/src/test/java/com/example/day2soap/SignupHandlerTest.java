@@ -20,11 +20,17 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.sql.Connection;
+
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 
 import com.example.day2soap.controller.DBHandler;
 import com.example.day2soap.controller.SignupHandler;
 import com.example.day2soap.model.User;
+import com.example.day2soap.repository.DBConnector;
 
 class SignupHandlerTest {
 
@@ -42,6 +48,19 @@ class SignupHandlerTest {
         mockMvc = MockMvcBuilders.standaloneSetup(signupHandler).build();
 
         signupHandler.setSignupStatus(false);
+
+        clearDatabase();
+    }
+
+    // ✅ Method to clear database before each test execution
+    private void clearDatabase() {
+        try (Connection conn = DBConnector.getConnection();
+             PreparedStatement stmt = conn.prepareStatement("DELETE FROM users")) {
+            stmt.executeUpdate();
+            System.out.println("Database cleared before test execution.");
+        } catch (SQLException e) {
+            throw new RuntimeException("Failed to clear database before test.", e);
+        }
     }
 
     @Test
