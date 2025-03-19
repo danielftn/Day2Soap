@@ -23,14 +23,9 @@ public class WatchedHandler {
             return ResponseEntity.badRequest().body("Invalid username or movie title");
         }
         
-        String sql = "UPDATE recommended_movies SET watched = ? WHERE user = ? AND movie_title = ?";
-        try (Connection conn = DBConnector.getConnection();
-            PreparedStatement pstmt = conn.prepareStatement(sql)) {
-            
-            pstmt.setBoolean(1, watched);
-            pstmt.setString(2, username);
-            pstmt.setString(3, movieTitle);
-            pstmt.executeUpdate();
+        try {
+            DBHandler dBhandler = new DBHandler();
+            dBhandler.updateMovies(username, movieTitle, watched);
         } catch (SQLException e) {
             e.printStackTrace();
             return ResponseEntity.internalServerError().body("Failed to update watched status");
