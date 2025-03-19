@@ -47,7 +47,7 @@ export default function Signup() {
     }
 
     return (
-    <main className='flex justify-center align-middle items-center m-[8rem]'>
+    <main className='items-center m-[4rem] '>
         <div className='bg-white p-6 rounded-lg shadow-lg w-full max-w-md'>
             <h2 className='text-center text-black text-[1.7rem] mb-5'>Sign up</h2>
             <form className='m-auto' onSubmit={handleSignup}>

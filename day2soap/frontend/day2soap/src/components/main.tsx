@@ -115,7 +115,7 @@ export default function Main() {
                 <div className='lg:grid lg:grid-cols-3 mb-5 sm:grid-cols-1'>
                     <div id="mparating" className='grid mb-5'>
                         <label className="text-black">MPA Rating</label>
-                        <select onChange={updateMpaRating} className='flex bg-slate-100 text-black rounded p-2'>
+                        <select onChange={updateMpaRating} className='bg-slate-100 text-black rounded p-2 w-full'>
                             <option>G - General Audience</option>
                             <option>PG - Parental Guidance Suggested</option>
                             <option>PG-13 - Parental Strongly Cautioned</option>
@@ -125,7 +125,7 @@ export default function Main() {
 
                     <div id="productiondecade" className='grid mb-5 lg:ml-4 '>
                         <label className="text-black">Production Decade</label>
-                        <select onChange={updateProductionDecade} className='bg-slate-100 text-black rounded p-2'>
+                        <select onChange={updateProductionDecade} className='bg-slate-100 text-black rounded p-2 w-full'>
                             <option>&lt; 1980s</option>
                             <option>1990s</option>
                             <option>2000s</option>
@@ -136,7 +136,7 @@ export default function Main() {
 
                     <div id="productiondecade" className='grid mb-5 lg:ml-4'>
                         <label className="text-black">Production Length</label>
-                        <select onChange={updateProductionLength} className='bg-slate-100 text-black rounded p-2'>
+                        <select onChange={updateProductionLength} className='bg-slate-100 text-black rounded p-2 w-full'>
                             <option>1h</option>
                             <option>2h</option>
                             <option>&gt; 3h</option>

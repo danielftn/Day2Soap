@@ -50,8 +50,8 @@ export default function Login() {
         
     }
   return (
-    <main className='flex justify-center align-middle items-center m-[8rem]'>
-        <div className='bg-white p-6 rounded-lg shadow-lg w-full max-w-md'>
+    <main className='items-center m-[4rem] '>
+        <div className='bg-white p-6 rounded-lg shadow-lg w-full max-w'>
             <h2 className='text-center text-black text-[1.7rem] mb-5'>Login</h2>
             <form className='m-auto' onSubmit={handleLogin}>
                 <div id='username' className='grid grid-cols-1 mb-5'>
