@@ -11,7 +11,8 @@ import com.example.day2soap.repository.DBConnector;
 import java.util.ArrayList;
 
 public class DBHandler {
-    public Boolean addUser(String username, String password) {
+    
+    public Boolean addUser(String username, String password) throws SQLException {
         Connection conn = DBConnector.getConnection();
         String SQLcommand = "INSERT INTO users (username, user_password) VALUES (?, ?)";
         try (PreparedStatement insertStatement = conn.prepareStatement(SQLcommand)) {
@@ -31,7 +32,7 @@ public class DBHandler {
         }
     }
 
-    public Boolean searchUser(String username, String password) {
+    public Boolean searchUser(String username, String password) throws SQLException {
         Connection conn = DBConnector.getConnection();
         String SQLcommand = "SELECT * FROM day2soapdb.users WHERE username = ? and user_password = ?";
         try (PreparedStatement selectStatement = conn.prepareStatement(SQLcommand)) {
@@ -51,7 +52,7 @@ public class DBHandler {
         }
     }
 
-    public List<Movie> retrieveMovies(String username) {
+    public List<Movie> retrieveMovies(String username) throws SQLException {
         List<Movie> movies = new ArrayList<Movie>();
         Connection conn = DBConnector.getConnection();
         String SQLcommand = "SELECT * FROM recommended_movies WHERE user = ?";

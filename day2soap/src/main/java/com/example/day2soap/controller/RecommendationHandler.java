@@ -30,7 +30,7 @@ public class RecommendationHandler {
 
     // Get the recommendation data from frontend and convert it into a String to ask Gemini. Returns a list of Movie objects as a JSON to frontend
     @PostMapping("/api/recommendation")
-    public ResponseEntity<List<Movie>> getRecommendation(@RequestBody UserPrompt prompt) {
+    public ResponseEntity<List<Movie>> getRecommendation(@RequestBody UserPrompt prompt) throws SQLException {
         // Create a prompt string based on the user's preferences for the LLM 
         System.out.println("Getting recommendation...\n");
 
@@ -64,7 +64,7 @@ public class RecommendationHandler {
 }
 
     // **Save Generated Movies to Database**
-    private void saveMoviesToDatabase(String username, List<Movie> movies) {
+    private void saveMoviesToDatabase(String username, List<Movie> movies) throws SQLException {
     Connection conn = DBConnector.getConnection();
     
     // SQL to check if the movie already exists in the database

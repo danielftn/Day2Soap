@@ -80,7 +80,7 @@ class SignupHandlerTest {
     }
 
     @Test
-void testSignUserUp_Failure() {
+void testSignUserUp_Failure() throws SQLException {
     DBHandler dbHandler = new DBHandler();
     
     dbHandler.addUser("testuser", "password123");
