@@ -11,11 +11,10 @@ public class DBConnector {
     public static Connection instance;
     
     // Return a new connection (singleton pattern)
-    public static Connection getConnection() {
-        if (instance == null ) {
+    public static Connection getConnection() throws SQLException {
+        if (instance == null || instance.isClosed()) {
             try {
                 instance = DriverManager.getConnection(URL, USERNAME, PASSWORD);
-                System.out.println("created database connection");
             } catch (SQLException e) {
                 e.printStackTrace();
                 throw new RuntimeException("Database connection failed!");
