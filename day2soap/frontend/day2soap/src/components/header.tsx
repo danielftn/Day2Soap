@@ -15,17 +15,17 @@ export default function Header() {
     <nav className='flex justify-between align-middle bg-white text-black p-4 shadow-lg sticky top-0'>
       <h1 className='flex text-[1.5rem] my-auto'>Day2Soap</h1>
       <ul className='md:flex hidden justify-between sm:space-x-[5rem] lg:text-[1.1rem] m-auto'>
-        <li>
+        <li className='hover:text-[#40d6ff]'>
           <Link href="/main">Home</Link>
         </li>
-        <li>
-          {isLoggedIn ? <Link href="/history">History</Link> : <Link href="/">History</Link>}
+        <li className='hover:text-[#40d6ff]'>
+          {isLoggedIn ? <Link href="/history" >History</Link> : <Link href="/">History</Link>}
         </li>
-        <li>
+        <li className='hover:text-[#40d6ff]'>
           {isLoggedIn ? <Link href="/movies">Movies</Link> : <Link href="/">Movies</Link>}
         </li>
       </ul>
-      <button className='md:block hidden rounded-md bg-[#A3EBFF] hover:bg-[#C7F0FB] shadow-md p-2'>
+      <button className='md:block hidden rounded-md bg-[#A3EBFF] hover:bg-[#C7F0FB] transform hover:scale-105 shadow-md p-2 font-bold'>
         {isLoggedIn ? <Link href="/" className='lg:m-6' onClick={logout}>Logout</Link> : <Link href="/" className='m-6' >Login</Link>}
       </button>
       
