@@ -5,9 +5,9 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class DBConnector {
-    private static final String URL = "jdbc:mysql://localhost:3306/Day2Soapdb";
-    private static final String USERNAME = "user";
-    private static final String PASSWORD = "ucalgary";
+    private static final String URL = System.getenv("JDBC_DB_URL");
+    private static final String USERNAME = System.getenv("JDBC_DB_USERNAME");
+    private static final String PASSWORD = System.getenv("JDBC_DB_PASSWORD");
     public static Connection instance;
     
     // Return a new connection (singleton pattern)

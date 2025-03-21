@@ -36,7 +36,7 @@ public class DBHandler {
 
     public Boolean searchUser(String username, String password) throws SQLException {
         Connection conn = DBConnector.getConnection();
-        String SQLcommand = "SELECT * FROM day2soapdb.users WHERE username = ? and user_password = ?";
+        String SQLcommand = "SELECT * FROM users WHERE username = ? and user_password = ?";
         try (PreparedStatement selectStatement = conn.prepareStatement(SQLcommand)) {
             selectStatement.setString(1, username);
             selectStatement.setString(2, password);
