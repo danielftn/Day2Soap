@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.GetMapping;
 
-@CrossOrigin(origins = "https://day2soap-production.up.railway.app")
+@CrossOrigin(origins = "https://day2soap.vercel.app/")
 @RestController
 public class LoginHandler {
 

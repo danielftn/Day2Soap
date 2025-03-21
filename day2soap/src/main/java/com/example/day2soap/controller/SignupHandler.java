@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 
 
-@CrossOrigin(origins = "https://day2soap-production.up.railway.app")
+@CrossOrigin(origins = "https://day2soap.vercel.app/")
 @RestController
 public class SignupHandler {
     

@@ -8,7 +8,7 @@ import com.example.day2soap.repository.DBConnector;
 import org.springframework.http.ResponseEntity;
 import java.sql.*;
 
-@CrossOrigin(origins = "https://day2soap-production.up.railway.app")
+@CrossOrigin(origins = "https://day2soap.vercel.app/")
 @RestController
 public class WatchedHandler {
     

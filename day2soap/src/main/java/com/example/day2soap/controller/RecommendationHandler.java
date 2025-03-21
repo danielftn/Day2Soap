@@ -19,7 +19,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.sql.Connection;
 
-@CrossOrigin(origins = "https://day2soap-production.up.railway.app")
+@CrossOrigin(origins = "https://day2soap.vercel.app/")
 @RestController
 public class RecommendationHandler {
     private final ChatClient.Builder builder;

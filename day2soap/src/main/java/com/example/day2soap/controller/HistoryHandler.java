@@ -10,7 +10,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-@CrossOrigin(origins = "https://day2soap-production.up.railway.app")
+@CrossOrigin(origins = "https://day2soap.vercel.app/")
 @RestController
 public class HistoryHandler {
 
