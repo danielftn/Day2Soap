@@ -26,8 +26,8 @@ export default function History() {
   }, [user]);
 
   return (
-    <main className="flex justify-center items-center m-[4rem]">
-      <div className="bg-white p-6 rounded-lg shadow-lg w-full max-w mx-10">
+    <main className="flex justify-center items-center m-[2rem] sm:m-[4rem]">
+      <div className="bg-white p-6 rounded-lg shadow-lg w-full max-w sm:mx-10 mx-2">
         <h2 className="text-left text-black text-[1.7rem] mb-5">History</h2>
         
         {movies.length === 0 ? (
