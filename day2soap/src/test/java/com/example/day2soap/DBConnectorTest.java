@@ -7,9 +7,9 @@ import org.junit.jupiter.api.Test;
 
 public class DBConnectorTest {
 
-    private static final String JDBC_URL = "jdbc:mysql://localhost:3306/Day2Soapdb";
-    private static final String USERNAME = "user";
-    private static final String PASSWORD = "ucalgary";
+    private static final String JDBC_URL = System.getenv("JDBC_DB_URL");
+    private static final String USERNAME = System.getenv("JDBC_DB_USERNAME");
+    private static final String PASSWORD = System.getenv("JDBC_DB_PASSWORD");
 
     @Test
     public void testDatabaseConnection() {
