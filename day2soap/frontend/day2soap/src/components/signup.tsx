@@ -28,9 +28,9 @@ export default function Signup() {
         }
 
         try {
-            const post_response = await fetch('http://localhost:8080/api/signup', signupPostRequest)
+            const post_response = await fetch('https://day2soap-production.up.railway.app/api/signup', signupPostRequest)
             if (post_response.ok) {
-                const get_response  = await fetch('http://localhost:8080/api/signup/status');
+                const get_response  = await fetch('https://day2soap-production.up.railway.app/api/signup/status');
                 if (await get_response.json()) {
                     router.push('/');
                 } else {

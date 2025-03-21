@@ -31,9 +31,9 @@ export default function Login() {
         }
 
         try {
-            const post_response = await fetch('http://localhost:8080/api/login', loginPostRequest)
+            const post_response = await fetch('https://day2soap-production.up.railway.app/api/login', loginPostRequest)
             if (post_response.ok) {
-                const get_response = await fetch('http://localhost:8080/api/login/status');
+                const get_response = await fetch('https://day2soap-production.up.railway.app/api/login/status');
                 const data = await get_response.json();
                 if (data.username !== null) {
                     login();

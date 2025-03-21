@@ -12,7 +12,7 @@ export default function History() {
 
     const fetchHistory = async () => {
       try {
-        const response = await fetch(`http://localhost:8080/api/history?username=${user}`);
+        const response = await fetch(`https://day2soap-production.up.railway.app/api/history?username=${user}`);
         if (response.ok) {
           const data: Movie[] = await response.json();
           setMovies(data);

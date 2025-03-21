@@ -69,7 +69,7 @@ export default function Main() {
         }
 
         try{
-            const post_response = await fetch('http://localhost:8080/api/recommendation', recommendationPostRequest);
+            const post_response = await fetch('https://day2soap-production.up.railway.app/api/recommendation', recommendationPostRequest);
             if(post_response.ok){
                 alert('Recommendation generated');
                 const data = await post_response.json();
