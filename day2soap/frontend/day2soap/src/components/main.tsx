@@ -157,8 +157,8 @@ export default function Main() {
                 </div>
                 
                 <div id='button' className='flex justify-center align-middle'>
-                    <button className='bg-[#a0eafe] p-3 rounded hover:bg-[#c5f2ff] w-full'>
-                        <Link href='/main' className='text-white font-bold'>Generate Movie Recommendation</Link>
+                    <button className='bg-[#a0eafe] p-3 rounded hover:bg-[#c5f2ff] w-full transform hover:scale-[1.02]'>
+                        <Link href='/main' className='text-black font-bold'>Generate Movie Recommendation</Link>
                     </button>
                 </div>
             </form>
