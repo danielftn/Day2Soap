@@ -65,36 +65,13 @@ public class RecommendationHandler {
 
     // **Save Generated Movies to Database**
     private void saveMoviesToDatabase(String username, List<Movie> movies) throws SQLException {
-    Connection conn = DBConnector.getConnection();
-    
-    // SQL to check if the movie already exists in the database
-    String checkSql = "SELECT COUNT(*) FROM recommended_movies WHERE user = ? AND movie_title = ?";
-    String insertSql = "INSERT INTO recommended_movies (user, movie_title, release_year, description) VALUES (?, ?, ?, ?)";
-
-    try (PreparedStatement checkPstmt = conn.prepareStatement(checkSql);
-         PreparedStatement insertPstmt = conn.prepareStatement(insertSql)) {
-
-        for (Movie movie : movies) {
-            // Check if the movie already exists
-            checkPstmt.setString(1, username);
-            checkPstmt.setString(2, movie.getTitle());
-            
-            ResultSet rs = checkPstmt.executeQuery();
-            if (rs.next() && rs.getInt(1) == 0) { // If the movie does not exist (count = 0)
-                // Movie doesn't exist, so insert it
-                insertPstmt.setString(1, username);
-                insertPstmt.setString(2, movie.getTitle());
-                insertPstmt.setInt(3, movie.getYear());
-                insertPstmt.setString(4, movie.getDescription());
-                insertPstmt.executeUpdate();
-            } else {
-                System.out.println("Movie already exists: " + movie.getTitle());
-            }
+        try {
+            DBHandler dBhandler = new DBHandler();
+            dBhandler.addMovies(username, movies);
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-    } catch (SQLException e) {
-        e.printStackTrace();
     }
-}
 
     public List<Movie> parseMovies(String response){
         // Create a pattern to match the movie information
