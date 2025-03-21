@@ -82,7 +82,7 @@ export default function Login() {
 
                 <div className='flex justify-center '>
                     <p className='flex text-gray-400 mr-2'>
-                        Don't have an account? 
+                        Don&apos;t have an account? 
                     </p>
                     <Link href='/signup' className='text-blue-500 hover:text-blue-200'>Sign up now</Link>
                 </div>
