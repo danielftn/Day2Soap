@@ -1,7 +1,6 @@
 "use client"
 
 import React, {useState} from 'react'
-import Link from 'next/link'
 import { useRouter } from 'next/navigation';
 
 export default function Signup() {
@@ -9,11 +8,11 @@ export default function Signup() {
     const [password, setPassword] = useState('');
     const router = useRouter();
 
-    const updateUsername = (event:any) => {
+    const updateUsername = (event) => {
         setUsername(event.target.value)
     }
 
-    const updatePassword = (event:any) => {
+    const updatePassword = (event) => {
         setPassword(event.target.value)
     }
 
