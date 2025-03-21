@@ -96,7 +96,7 @@ export default function Main() {
     }
 
   return (
-    <main className='items-center m-[4rem] '>
+    <main className='items-center sm:m-[4rem] m-[2rem] '>
         <div className='bg-white p-6 rounded-lg shadow-lg w-full max-w'>
             <h2 className='text-left text-black text-[1.7rem] mb-5'>Movie Information</h2>
             <form className='m-auto' onSubmit={handleRecommendation}>
@@ -157,8 +157,8 @@ export default function Main() {
                 </div>
                 
                 <div id='button' className='flex justify-center align-middle'>
-                    <button className='bg-[#a0eafe] p-3 rounded hover:bg-[#c5f2ff] w-full transform hover:scale-[1.02]'>
-                        <Link href='/main' className='text-black font-bold'>Generate Movie Recommendation</Link>
+                    <button className='bg-[#a0eafe] p-3 rounded hover:bg-[#c5f2ff] w-full'>
+                        <Link href='/main' className='text-white font-bold'>Generate Movie Recommendation</Link>
                     </button>
                 </div>
             </form>
