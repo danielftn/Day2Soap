@@ -13,6 +13,10 @@ public class UserPrompt {
     private String productionDecade;
     private String productionLength;
 
+    public UserPrompt() {
+        // No-argument constructor for testing and deserialization
+    }
+
     public UserPrompt(Movie favouriteMovie, User user, String favouriteActor, String favouriteDirector, String mpaRating, String productionDecade, String productionLength, String username, String favouriteGenre) {
         this.favouriteMovie = favouriteMovie;
         this.user = user;

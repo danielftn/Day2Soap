@@ -50,7 +50,7 @@ export default function Login() {
         
     }
   return (
-    <main className='flex justify-center align-middle items-center m-[8rem]'>
+    <main className='flex justify-center items-center m-[4rem]'>
         <div className='bg-white p-6 rounded-lg shadow-lg w-full max-w-md'>
             <h2 className='text-center text-black text-[1.7rem] mb-5'>Login</h2>
             <form className='m-auto' onSubmit={handleLogin}>
@@ -62,7 +62,7 @@ export default function Login() {
 
                 <div id='username' className='grid'>
                     <label className='text-black'>Password </label>
-                    <input value={password} onChange={updatePassword} type="password" className='bg-slate-100 text-black rounded p-2 ' placeholder='Enter Password' required>
+                    <input value={password} onChange={updatePassword} type="password" className='bg-slate-100 text-black rounded p-2 w-full' placeholder='Enter Password' required>
                     </input>
                 </div>
 

@@ -52,6 +52,7 @@ export default function Main() {
     
     const handleRecommendation = async (event) => {
         event.preventDefault();
+        console.log(favouriteActor, favouriteDirector, favouriteGenre, favouriteMovie, mpaRating, productionDecade, productionLength);
         const recommendationPostRequest = {
             method: 'POST',
                 headers: {'Content-Type': 'application/json'},
@@ -75,6 +76,7 @@ export default function Main() {
                 console.log(data);
                 updateRecommendationData(data);
                 setShowRecommendation(true);
+                console.log("Recommendation data:" + recommendationData);
             } else {
                 alert('Recommendation failed');
             }
@@ -83,39 +85,49 @@ export default function Main() {
         }
     }
 
+    const ResetPreferences = () => {
+        setFavouriteMovie('');
+        setFavouriteGenre('');
+        setFavouriteActor('');
+        setFavouriteDirector('');
+        setMpaRating('G - General Audience');
+        setProductionDecade('< 1980s');
+        setProductionLength('1h');
+    }
+
   return (
-    <main className='justify-center align-middle items-center m-[8rem]'>
+    <main className='items-center m-[4rem] '>
         <div className='bg-white p-6 rounded-lg shadow-lg w-full max-w'>
             <h2 className='text-left text-black text-[1.7rem] mb-5'>Movie Information</h2>
             <form className='m-auto' onSubmit={handleRecommendation}>
                 <div id='favouritemovie' className='grid grid-cols-1 mb-5'>
                     <label className='text-black'>Favourite Movie</label>
-                    <input onChange={updateMovie} type='text' className='bg-slate-100 text-black rounded p-2' placeholder='Favourite Movie' required>
+                    <input onChange={updateMovie} value={favouriteMovie  || ''} type='text' className='bg-slate-100 text-black rounded p-2' placeholder='Favourite Movie' required>
                     </input>
                 </div>
 
                 <div id='favouritegenre' className='grid grid-cols-1 mb-5'>
                     <label className='text-black'>Favourite Genre </label>
-                    <input onChange={updateGenre} type='text' className='bg-slate-100 text-black rounded p-2' placeholder='Favourite Genre' required>
+                    <input onChange={updateGenre} value={favouriteGenre  || ''}type='text' className='bg-slate-100 text-black rounded p-2' placeholder='Favourite Genre' required>
                     </input>
                 </div>
 
                 <div id='favouriteactor' className='grid grid-cols-1 mb-5'>
                     <label className='text-black'>Favourite Actor (Optional) </label>
-                    <input onChange={updateActor} type='text' className='bg-slate-100 text-black rounded p-2' placeholder='Favourite Actor' >
+                    <input onChange={updateActor} value={favouriteActor  || ''} type='text' className='bg-slate-100 text-black rounded p-2' placeholder='Favourite Actor' >
                     </input>
                 </div>
-
+                
                 <div id='favouritedirector' className='grid grid-cols-1 mb-5'>
                     <label className='text-black'>Favourite Director (Optional) </label>
-                    <input onChange={updateDirector}type='text' className='bg-slate-100 text-black rounded p-2' placeholder='Favourite Director' >
+                    <input onChange={updateDirector} value={favouriteDirector || ''}type='text' className='bg-slate-100 text-black rounded p-2' placeholder='Favourite Director' >
                     </input>
                 </div>
 
-                <div className='flex mb-5'>
-                    <div id="mparating" className='grid grid-cols-1 mb-5 w-1/3'>
+                <div className='lg:grid lg:grid-cols-3 mb-5 sm:grid-cols-1'>
+                    <div id="mparating" className='grid mb-5'>
                         <label className="text-black">MPA Rating</label>
-                        <select onChange={updateMpaRating} className='bg-slate-100 text-black rounded p-2'>
+                        <select onChange={updateMpaRating} value={mpaRating} className='bg-slate-100 text-black rounded p-2 w-full'>
                             <option>G - General Audience</option>
                             <option>PG - Parental Guidance Suggested</option>
                             <option>PG-13 - Parental Strongly Cautioned</option>
@@ -123,9 +135,9 @@ export default function Main() {
                         </select>
                     </div>
 
-                    <div id="productiondecade" className='grid grid-cols-1 max-w mb-5 ml-4 w-1/3'>
+                    <div id="productiondecade" className='grid mb-5 lg:ml-4 '>
                         <label className="text-black">Production Decade</label>
-                        <select onChange={updateProductionDecade} className='bg-slate-100 text-black rounded p-2'>
+                        <select onChange={updateProductionDecade} value={productionDecade} className='bg-slate-100 text-black rounded p-2 w-full'>
                             <option>&lt; 1980s</option>
                             <option>1990s</option>
                             <option>2000s</option>
@@ -134,9 +146,9 @@ export default function Main() {
                         </select>
                     </div>
 
-                    <div id="productiondecade" className='grid grid-cols-1 mb-5 ml-4 w-1/3'>
+                    <div id="productiondecade" className='grid mb-5 lg:ml-4'>
                         <label className="text-black">Production Length</label>
-                        <select onChange={updateProductionLength} className='bg-slate-100 text-black rounded p-2'>
+                        <select onChange={updateProductionLength} value={productionLength} className='bg-slate-100 text-black rounded p-2 w-full'>
                             <option>1h</option>
                             <option>2h</option>
                             <option>&gt; 3h</option>
@@ -145,11 +157,17 @@ export default function Main() {
                 </div>
                 
                 <div id='button' className='flex justify-center align-middle'>
-                    <button className='bg-[#a0eafe] p-3 rounded hover:bg-[#c5f2ff] w-full'>
-                        <Link href='/main' className='text-white font-bold'>Generate Movie Recommendation</Link>
+                    <button className='bg-[#a0eafe] p-3 rounded hover:bg-[#c5f2ff] w-full transform hover:scale-[1.02]'>
+                        <Link href='/main' className='text-black font-bold'>Generate Movie Recommendation</Link>
                     </button>
                 </div>
             </form>
+
+                <div>
+                    <button onClick={() => ResetPreferences()} className='bg-[#a0eafe] mt-3 p-3 rounded hover:bg-[#c5f2ff] w-full'>
+                        <p className='text-white font-bold'>Reset Preferences</p>
+                    </button>
+                </div>
         </div>
 
         <div>
