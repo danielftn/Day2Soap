@@ -18,6 +18,7 @@ export default function Signup() {
 
     const handleSignup = async (event: React.FormEvent) => {
         event.preventDefault();
+        // post request json format with username and password
         const signupPostRequest = {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
@@ -28,8 +29,10 @@ export default function Signup() {
         }
 
         try {
+            // call backend api and send user json
             const post_response = await fetch('https://day2soap-production.up.railway.app/api/signup', signupPostRequest)
             if (post_response.ok) {
+                // if response is received then check if signup was successful (added to database)
                 const get_response  = await fetch('https://day2soap-production.up.railway.app/api/signup/status');
                 if (await get_response.json()) {
                     router.push('/');
@@ -40,6 +43,7 @@ export default function Signup() {
                 alert("Signup failed (fetch worked)");
             }
         } catch (error) {
+            // print to console if call fails
             console.log(error)
         }
         

@@ -7,12 +7,16 @@ export default function Movies() {
   const { user } = useUser();
   const [movies, setMovies] = useState<Movie[]>([]);
 
+  // whenever user is changed then when the page is loaded recall the api so that the movies match the user
   useEffect(() => {
+      // if not logged in then do not call backend api
       if (!user) return;
-  
+
+      // call backend api 
       const fetchHistory = async () => {
         try {
           const response = await fetch(`https://day2soap-production.up.railway.app/api/history?username=${user}`);
+          // if response was received then save the movies returned for the specific user in json format and then change useState of movies.
           if (response.ok) {
             const data: Movie[] = await response.json();
             setMovies(data);
@@ -44,11 +48,13 @@ export default function Movies() {
   const updateMovie = async (updatedMovie) => {
     console.log("Updating movie: ", updatedMovie);
     try{
+      // call backend api with put method (update) containing the user and the movie which was checked off
       const response = await fetch(`https://day2soap-production.up.railway.app/api/watched`, { 
         method: 'PUT',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({username: user, movie: updatedMovie})
       });
+      // if response is received then console log a success otherwise say there was an error
       if(response.ok){
         console.log("Movie updated successfully")
       }
