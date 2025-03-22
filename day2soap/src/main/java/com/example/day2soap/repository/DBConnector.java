@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class DBConnector {
+    // database credentials using environmental variables
     private static final String URL = System.getenv("JDBC_DB_URL");
     private static final String USERNAME = System.getenv("JDBC_DB_USERNAME");
     private static final String PASSWORD = System.getenv("JDBC_DB_PASSWORD");

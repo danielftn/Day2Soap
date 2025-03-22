@@ -6,6 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class Day2soapApplication {
 	public static void main(String[] args) {
+		// start application
 		SpringApplication.run(Day2soapApplication.class, args);
 	}
 }
