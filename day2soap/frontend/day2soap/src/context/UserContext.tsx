@@ -9,6 +9,7 @@ export const UserContext = createContext<{
 export const UserProvider = ({ children }) => {
     const [user, setUser] = useState<string | null>(null);
 
+    // on loading of the page, save the user information so you dont lose track of whos logged in on refreshes
     useEffect(() => {
         const storedUser = localStorage.getItem("user");
         if (storedUser) {
@@ -16,6 +17,7 @@ export const UserProvider = ({ children }) => {
         }   
     }, []);
 
+    // changes which user is logged in
     const switchUser = (u: string) => {
         setUser(u);
         localStorage.setItem("user", u);
@@ -28,6 +30,7 @@ export const UserProvider = ({ children }) => {
     );
 };
 
+// exports user information to other pages
 export const useUser = () => {
     const c =  useContext(UserContext);
     if (!c) {

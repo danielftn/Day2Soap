@@ -12,6 +12,7 @@ export const AuthProvider = ({ children })  => {
     const router = useRouter()
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     
+    // on loading of the page, save the login status so you dont logout on refreshes
     useEffect(() => {
         const storedLogin = localStorage.getItem("isLoggedIn");
         if (storedLogin === "true") {
@@ -19,11 +20,13 @@ export const AuthProvider = ({ children })  => {
         }
     }, []);
 
+    // sets login to true and reroutes you to main page
     const login = () => {
         setIsLoggedIn(true);
         localStorage.setItem("isLoggedIn", "true")
         router.push('/main');
     }
+    // sets login to false and emptys local storage, then reloads the page so you go back to login page
     const logout = () => {
         setIsLoggedIn(false);
         localStorage.removeItem("isLoggedIn");
@@ -39,6 +42,7 @@ export const AuthProvider = ({ children })  => {
     )
 }
 
+// export login status to other pages
 export const useAuth = () => {
     return useContext(AuthContext);
 }
