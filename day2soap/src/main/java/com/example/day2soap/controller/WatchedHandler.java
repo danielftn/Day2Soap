@@ -8,10 +8,12 @@ import com.example.day2soap.repository.DBConnector;
 import org.springframework.http.ResponseEntity;
 import java.sql.*;
 
+// initialize CORS
 @CrossOrigin(origins = "https://day2soap.vercel.app/")
 @RestController
 public class WatchedHandler {
     
+    // handles put request when user on frontend checks off movie they watched
     @PutMapping("/api/watched")
     public ResponseEntity<String> setWatched(@RequestBody MovieRequest request) {
         String username = request.getUsername();
@@ -24,13 +26,15 @@ public class WatchedHandler {
         }
         
         try {
+            // call to the database
             DBHandler dBhandler = new DBHandler();
+            // update the watched status of a movie which will be automatically updated to the frontend
             dBhandler.updateMovies(username, movieTitle, watched);
         } catch (SQLException e) {
             e.printStackTrace();
             return ResponseEntity.internalServerError().body("Failed to update watched status");
         }
-        
+        // send OK response
         return ResponseEntity.ok("Successfully updated watched status");
     }
 }
