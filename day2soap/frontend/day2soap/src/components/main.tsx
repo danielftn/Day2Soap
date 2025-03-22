@@ -53,6 +53,7 @@ export default function Main() {
     const handleRecommendation = async (event) => {
         event.preventDefault();
         console.log(favouriteActor, favouriteDirector, favouriteGenre, favouriteMovie, mpaRating, productionDecade, productionLength);
+        // format of post request which contains movies to add to database
         const recommendationPostRequest = {
             method: 'POST',
                 headers: {'Content-Type': 'application/json'},
@@ -69,7 +70,9 @@ export default function Main() {
         }
 
         try{
+            // call backend api
             const post_response = await fetch('https://day2soap-production.up.railway.app/api/recommendation', recommendationPostRequest);
+            // if response is received then save the response as a json then change the useState for the recommendation data and then print to console
             if(post_response.ok){
                 alert('Recommendation generated');
                 const data = await post_response.json();
@@ -85,6 +88,7 @@ export default function Main() {
         }
     }
 
+    // sets the mandatory fields to null whenever you want to reset the form, also has default values for rating, production time and length
     const ResetPreferences = () => {
         setFavouriteMovie('');
         setFavouriteGenre('');
