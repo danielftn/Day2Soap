@@ -7,17 +7,22 @@ export default function History() {
   const { user } = useUser();
   const [movies, setMovies] = useState<Movie[]>([]);
 
+  // everytime user information changes, recall api so movie history matches the right user
   useEffect(() => {
+    // if not logged in then do not call backend api
     if (!user) return;
 
     const fetchHistory = async () => {
       try {
+        // call backend api and send user information
         const response = await fetch(`https://day2soap-production.up.railway.app/api/history?username=${user}`);
+        // if response is received then can save the movie data as json and update the movies useState
         if (response.ok) {
           const data: Movie[] = await response.json();
           setMovies(data);
         }
       } catch (error) {
+        // print to console if call fails
         console.error("Error fetching history:", error);
       }
     };

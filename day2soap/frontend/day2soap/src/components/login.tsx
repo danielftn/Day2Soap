@@ -21,6 +21,7 @@ export default function Login() {
 
     const handleLogin = async (event) => {
         event.preventDefault();
+        // post request json format with username and password
         const loginPostRequest = {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
@@ -31,10 +32,14 @@ export default function Login() {
         }
 
         try {
+            // call backend api and send user json
             const post_response = await fetch('https://day2soap-production.up.railway.app/api/login', loginPostRequest)
+            // if response is received then check which user is logged in by calling another api
             if (post_response.ok) {
                 const get_response = await fetch('https://day2soap-production.up.railway.app/api/login/status');
+                // save the user information returned
                 const data = await get_response.json();
+                // check if the username returned is not empty
                 if (data.username !== null) {
                     login();
                     switchUser(data.username);
@@ -45,6 +50,7 @@ export default function Login() {
                 alert('Login failed (post failed)');
             }
         } catch (error) {
+            // print to console if call fails
             console.log(error)
         }
         
