@@ -19,6 +19,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.sql.Connection;
 
+// initialize CORS
 @CrossOrigin(origins = "https://day2soap.vercel.app/")
 @RestController
 public class RecommendationHandler {
